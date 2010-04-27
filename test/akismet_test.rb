@@ -6,23 +6,24 @@ class AkismetTest < Test::Unit::TestCase
     # jonahb2's personal key
     @key = 'ecd2022d3247'
     @home_url = 'http://example.com'
+    @service = Akismet::Service.new
   end
 
   def test_verify_key_fails_with_invalid_key
-    assert !Akismet.verify_key( 'bad_key', '' )
+    assert !@service.verify_key( 'bad_key', '' )
   end
   
   def test_verify_key_fails_with_invalid_home_url
-    assert !Akismet.verify_key( @key, '' )
+    assert !@service.verify_key( @key, '' )
   end
   
   def test_verify_key_succeeds
-    assert Akismet.verify_key( @key, @home_url )
+    assert @service.verify_key( @key, @home_url )
   end
 
   def test_check_comment_returns_true_for_spam
     # the author 'viagra-test-123' always triggers a true response
-    assert Akismet.comment_check( @key,
+    assert @service.comment_check( @key,
       @home_url,
       '123.123.123.123',
       'Test user-agent',
@@ -35,7 +36,7 @@ class AkismetTest < Test::Unit::TestCase
   end
 
   def test_check_comment_returns_true_for_spam_with_minimal_parameters
-    assert Akismet.comment_check( @key,
+    assert @service.comment_check( @key,
       @home_url,
       '123.123.123.123',
       'Test user-agent',
@@ -43,14 +44,14 @@ class AkismetTest < Test::Unit::TestCase
   end
 
   def test_submit_ham
-    assert_nil Akismet.submit_ham( @key,
+    assert_nil @service.submit_ham( @key,
       @home_url,
       '123.123.123.123',
       'Test user-agent' )
   end
 
   def test_submit_spam
-    assert_nil Akismet.submit_ham( @key,
+    assert_nil @service.submit_ham( @key,
       @home_url,
       '123.123.123.123',
       'Test user-agent' )

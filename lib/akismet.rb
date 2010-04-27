@@ -14,7 +14,7 @@ module Akismet
     PINGBACK = 'pingback'
   end
 
-  class << self
+  class Service
 
     def verify_key( api_key, home_url )
       response = invoke( 'verify-key', 'rest.akismet.com', :blog => home_url,
