@@ -2,6 +2,8 @@ require 'rubygems'
 require 'rake/testtask'
 require 'lib/akismet'
 
+task :default => :test
+
 Rake::TestTask.new do |t|
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
