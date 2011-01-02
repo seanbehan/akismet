@@ -1,13 +1,6 @@
-require 'test/unit'
-require File.dirname( __FILE__ ) + '/../lib/akismet'
+require File.dirname( __FILE__ ) + '/akismet_test'
 
-class ServiceTest < Test::Unit::TestCase
-  def setup
-    # akismet@jonahb.com's personal key
-    @key = 'ecd2022d3247'
-    @home_url = 'http://example.com'
-    @service = Akismet::Service.new
-  end
+class ServiceTest < AkismetTest
 
   def test_verify_key_fails_with_invalid_key
     assert !@service.verify_key( 'bad_key', '' )
