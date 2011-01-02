@@ -1,7 +1,7 @@
 require 'test/unit'
 require File.dirname( __FILE__ ) + '/../lib/akismet'
 
-class AkismetTest < Test::Unit::TestCase
+class ServiceTest < Test::Unit::TestCase
   def setup
     # akismet@jonahb.com's personal key
     @key = 'ecd2022d3247'
