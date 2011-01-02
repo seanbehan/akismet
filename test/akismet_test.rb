@@ -3,7 +3,7 @@ require File.dirname( __FILE__ ) + '/../lib/akismet'
 
 class AkismetTest < Test::Unit::TestCase
   def setup
-    # jonahb2's personal key
+    # akismet@jonahb.com's personal key
     @key = 'ecd2022d3247'
     @home_url = 'http://example.com'
     @service = Akismet::Service.new
