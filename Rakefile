@@ -1,6 +1,4 @@
-require 'rubygems'
 require 'rake/testtask'
-require 'lib/akismet'
 
 task :default => :test
 
