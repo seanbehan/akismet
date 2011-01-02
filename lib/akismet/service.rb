@@ -34,7 +34,7 @@ module Akismet
     def comment_check( api_key, home_url, user_ip, user_agent, params = {} )
       response = invoke_comment_method 'comment-check', api_key, home_url,
         user_ip, user_agent, params
-        
+
       response.is_a?( Net::HTTPOK ) && response.body == 'true'
     end
 
@@ -51,7 +51,7 @@ module Akismet
 
       nil
     end
-    
+
   private
 
     def invoke_comment_method( method_name, api_key, home_url, user_ip, user_agent, params = {} )
@@ -60,7 +60,7 @@ module Akismet
       params = params.merge :blog => home_url,
         :user_ip => user_ip,
         :user_agent => user_agent
-      
+
       invoke method_name, host, params
     end
 
@@ -68,17 +68,17 @@ module Akismet
     def invoke( method_name, host, params )
       path = "/#{ AKISMET_VERSION }/#{ method_name }"
       data = url_encode( params )
-    
+
       Net::HTTP.start( host, PORT ) do |http|
         http.post( path, data, HEADERS )
       end
     end
-  
+
     def url_encode( hash = {} )
       hash.collect do |k, v|
         "#{ CGI.escape( k.to_s ) }=#{ CGI.escape( v.to_s ) }"
       end.join( "&" )
     end
-  
+
   end
 end

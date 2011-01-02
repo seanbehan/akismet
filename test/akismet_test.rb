@@ -12,11 +12,11 @@ class AkismetTest < Test::Unit::TestCase
   def test_verify_key_fails_with_invalid_key
     assert !@service.verify_key( 'bad_key', '' )
   end
-  
+
   def test_verify_key_fails_with_invalid_home_url
     assert !@service.verify_key( @key, '' )
   end
-  
+
   def test_verify_key_succeeds
     assert @service.verify_key( @key, @home_url )
   end
