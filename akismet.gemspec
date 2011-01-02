@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = [ 'Jonah Burke' ]
   s.email       = [ 'jonah@bigthink.com' ]
-  s.homepage    = ''
+  s.homepage    = 'http://github.com/bigthink/akismet'
   s.summary     = 'A Ruby client for the Akismet API'
   s.description = s.summary
 
