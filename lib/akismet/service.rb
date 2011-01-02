@@ -13,6 +13,18 @@ module Akismet
     PINGBACK = 'pingback'
   end
 
+  # Parameters to +comment_check+, +submit_ham+, and +submit_spam+ may
+  # include:
+  #
+  # * content_type
+  # * comment_author
+  # * comment_author_email
+  # * comment_author_url
+  # * comment_content
+  # * others representing HTTP headers and server environment vars
+  #
+  # See http://akismet.com/development/api/#comment-check for more info.
+  #
   class Service
 
     def verify_key( api_key, home_url )
@@ -21,15 +33,6 @@ module Akismet
 
       response.is_a?( Net::HTTPOK ) && response.body == 'valid'
     end
-
-    # params to the following 3 methods may include:
-    #  permalink
-    #  content_type
-    #  comment_author
-    #  comment_author_email
-    #  comment_author_url
-    #  comment_content
-    #  others representing HTTP headers and server environment vars
 
     def comment_check( api_key, home_url, user_ip, user_agent, params = {} )
       response = invoke_comment_method 'comment-check', api_key, home_url,
