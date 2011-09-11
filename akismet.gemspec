@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.summary     = 'A Ruby client for the Akismet API'
   s.description = s.summary
 
-  s.required_ruby_version = '~> 1.8.6'
+  s.required_ruby_version = '>= 1.8.6'
   s.required_rubygems_version = '>= 1.3.5'
 
   s.files        = Dir.glob( 'lib/**/*' )
